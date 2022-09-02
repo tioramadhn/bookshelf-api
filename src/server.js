@@ -1,13 +1,13 @@
-const { server: _server } = require('@hapi/hapi');
-const routes = require('./routes');
+const { server: _server } = require("@hapi/hapi");
+const routes = require("./routes");
 
 const init = async () => {
   const server = _server({
     port: 5000,
-    host: 'localhost',
+    host: process.env.NODE_ENV !== "production" ? "localhost" : "0.0.0.0",
     routes: {
       cors: {
-        origin: ['*'],
+        origin: ["*"],
       },
     },
   });
